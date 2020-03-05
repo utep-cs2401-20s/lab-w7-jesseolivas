@@ -4,9 +4,10 @@ public class SortOfSort {
         int start = 0; // first index
         int max; // highest value in the array
         int index; // current index being compared and swapped
-        int temp;
+        int temp; // temporary value for swapping
         int count = 0;
-        boolean front = false;
+        boolean front = false; // boolean to check if we want to sort in the front or not
+
         for(int i = 0; i < a.length-1; i++){
             max = Integer.MIN_VALUE;
             index = i;
@@ -16,7 +17,6 @@ public class SortOfSort {
                     index = j;
                 }
             }
-
             // Conditionals that compare start and and indexes
             if(start < end) {
 
@@ -45,13 +45,7 @@ public class SortOfSort {
                 front = !front;
             }
         }
-
         return a;
-    }
-    public static void swap(int[] array, int a, int b){
-        int temp = array[a];
-        array[a] = array[b];
-        array[b] = temp;
     }
 
     public static void main(String[] args) {
