@@ -1,40 +1,51 @@
 public class SortOfSort {
     public static int[] sortOfSort(int[] a){
-
-        int max = a.length-1;
-        int end = a.length-1;
-        int min = 0;
-        int size = a.length;
+        int end = a.length-1; // last index
+        int start = 0; // first index
+        int max; // highest value in the array
+        int index; // current index being compared and swapped
         int temp;
-        int count;
-        for (int i = 0; i < a.length - 1; i++) {
-            for (int j = 0; j < a.length - i - 1; j++) {
-                if (a[j] > a[j+1]) {
-                    temp = a[j];
-                    a[j] = a[j + 1];
-                    a[j + 1] = temp;
+        int count = 0;
+        boolean front = false;
+        for(int i = 0; i < a.length-1; i++){
+            max = Integer.MIN_VALUE;
+            index = i;
+            for(int j = start ; j <= end; j++){
+                if(a[j] > max){
+                    max = a[j];
+                    index = j;
                 }
             }
-        }
-        while (size > 0 ){
-            count = 0;
-            while (count < 2 && max >=0) {
-                swap(a,max,max);
-                end--;
-                max--;
-                count++;
-                size--;
-            }
-            count = 0;
-            while(count<2 && max >=0){
-                swap(a,min,max);
-                min++;
-                max--;
-                count++;
-                size--;
-            }
 
+            // Conditionals that compare start and and indexes
+            if(start < end) {
+
+                // starting from the end, so not the start, sort the highest two values
+                // in descending order
+                if (!front) {
+                    temp = a[end];
+                    a[end] = max;
+                    a[index] = temp;
+                    end--;
+                }
+
+                // moving onto the front, sort the highest two values in ascending order
+                else{
+                    temp = a[start];
+                    a[start] = max;
+                    a[index] = temp;
+                    start++;
+                }
+            }
+            count++;
+
+            // After two iterations, the boolean changes to satisfy the front conditional
+            if(count == 2){
+                count = 0;
+                front = !front;
+            }
         }
+
         return a;
     }
     public static void swap(int[] array, int a, int b){
