@@ -1,6 +1,8 @@
 public class SortOfSort {
     public static int[] sortOfSort(int[] a){
+
         int max = a.length-1;
+        int end = a.length-1;
         int min = 0;
         int size = a.length;
         int temp;
@@ -14,29 +16,31 @@ public class SortOfSort {
                 }
             }
         }
-        int[] temp1 = new int[a.length];
-        for(int i = 0;i < a.length;i++){
-            temp1[i] = a[i];
-        }
         while (size > 0 ){
             count = 0;
             while (count < 2 && max >=0) {
-                a[max] = temp1[max];
+                swap(a,max,max);
+                end--;
                 max--;
                 count++;
                 size--;
             }
             count = 0;
             while(count<2 && max >=0){
-                a[min] = temp1[max];
+                swap(a,min,max);
                 min++;
                 max--;
                 count++;
                 size--;
             }
-        }
 
+        }
         return a;
+    }
+    public static void swap(int[] array, int a, int b){
+        int temp = array[a];
+        array[a] = array[b];
+        array[b] = temp;
     }
 
     public static void main(String[] args) {
