@@ -1,5 +1,8 @@
 public class SortOfSort {
     public static int[] sortOfSort(int[] a){
+        if(a.length< 2) {
+            return a;
+        }
         int end = a.length-1; // last index
         int start = 0; // first index
         int max; // highest value in the array
@@ -7,8 +10,10 @@ public class SortOfSort {
         int temp; // temporary value for swapping
         int count = 0;
         boolean front = false; // boolean to check if we want to sort in the front or not
+        int steps = 0;
 
         for(int i = 0; i < a.length-1; i++){
+            steps++;
             max = Integer.MIN_VALUE;
             index = i;
             for(int j = start ; j <= end; j++){
@@ -45,6 +50,7 @@ public class SortOfSort {
                 front = !front;
             }
         }
+        System.out.println(steps);
         return a;
     }
 }

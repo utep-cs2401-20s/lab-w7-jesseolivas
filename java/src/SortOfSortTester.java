@@ -65,6 +65,15 @@ public class SortOfSortTester {
     // Tests an empty array
     @Test
     public void test7(){
+        int[] a = {1};
+        SortOfSort.sortOfSort(a);
+        int[] exp = {1};
+        Assert.assertArrayEquals(exp, a);
+    }
+
+    // Tests an empty array
+    @Test
+    public void test8(){
         int[] a = {};
         SortOfSort.sortOfSort(a);
         int[] exp = {};
