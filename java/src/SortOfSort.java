@@ -12,16 +12,22 @@ public class SortOfSort {
         boolean front = false; // boolean to check if we want to sort in the front or not
         int steps = 0;
 
-        for(int i = 0; i < a.length-1; i++){
-            steps++;
+        // This for loop iterates n times, linear
+        for(int i = 0; i < a.length-1; i++){ // O(n) complexity
             max = Integer.MIN_VALUE;
-            index = i;
-            for(int j = start ; j <= end; j++){
+            index = i; // O(1) complexity
+
+            // This for loop also iterates n times, linear
+            for(int j = start ; j <= end; j++){ // O(n) complexity
+                steps ++;
                 if(a[j] > max){
                     max = a[j];
                     index = j;
                 }
             }
+            // There are two linear algorithms in this method when n > 1,
+            // making it a quadratic algorithm where O(n^2)
+
             // Conditionals that compare start and and indexes
             if(start < end) {
 
